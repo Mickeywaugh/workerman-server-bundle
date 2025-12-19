@@ -9,7 +9,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Tourze\WorkermanServerBundle\HTTP\WorkermanResponseEmitter;
 use Workerman\Connection\TcpConnection;
-use Workerman\Protocols\Http\Request as WorkermanRequest;
 use Workerman\Protocols\Http\Response as WorkermanResponse;
 
 /**
@@ -28,20 +27,14 @@ final class WorkermanResponseEmitterTest extends TestCase
      */
     private $responseBody;
 
-    /**
-     * @var WorkermanRequest
-     */
-    private object $workermanRequest;
+    private TestWorkermanRequest $workermanRequest;
 
     /**
      * @var TcpConnection&MockObject
      */
     private $connection;
 
-    /**
-     * @var WorkermanResponseEmitter
-     */
-    private $emitter;
+    private WorkermanResponseEmitter $emitter;
 
     protected function setUp(): void
     {
@@ -52,23 +45,7 @@ final class WorkermanResponseEmitterTest extends TestCase
 
         // 创建一个简化的测试对象来模拟 WorkermanRequest
         // 这避免了 PHPUnit 12 对 method() 方法名的弃用警告
-        $this->workermanRequest = new class('') extends WorkermanRequest {
-            private string $connectionHeader = 'keep-alive';
-
-            public function setConnectionHeader(string $header): void
-            {
-                $this->connectionHeader = $header;
-            }
-
-            public function header(?string $name = null, mixed $default = null): mixed
-            {
-                if ('connection' === $name) {
-                    return $this->connectionHeader;
-                }
-
-                return $default ?? '';
-            }
-        };
+        $this->workermanRequest = new TestWorkermanRequest('');
 
         // 使用 TcpConnection 具体类 mock 是必要的，因为：
         // 1. Workerman 的 TcpConnection 类没有对应的接口
@@ -111,7 +88,6 @@ final class WorkermanResponseEmitterTest extends TestCase
         ;
 
         // 配置 Workerman 请求
-        // @phpstan-ignore-next-line
         $this->workermanRequest->setConnectionHeader('keep-alive');
 
         // 验证 connection 的发送调用 - 注意参数 2 是 false 而不是 true
@@ -169,7 +145,6 @@ final class WorkermanResponseEmitterTest extends TestCase
         ;
 
         // 配置 Workerman 请求
-        // @phpstan-ignore-next-line
         $this->workermanRequest->setConnectionHeader('close');
 
         // 验证 connection 的关闭调用

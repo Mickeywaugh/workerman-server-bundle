@@ -32,7 +32,7 @@ use Workerman\Worker;
     description: '启动Workerman-HTTP服务'
 )]
 #[Autoconfigure(public: true)]
-class WorkermanHttpCommand extends Command
+final class WorkermanHttpCommand extends Command
 {
     public const NAME = 'workerman:http';
 

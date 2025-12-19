@@ -2,6 +2,6 @@
 
 namespace Tourze\WorkermanServerBundle\Exception;
 
-class RequestProcessingException extends \RuntimeException
+final class RequestProcessingException extends \RuntimeException
 {
 }

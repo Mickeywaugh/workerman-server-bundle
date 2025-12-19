@@ -4,19 +4,10 @@ services:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
-  # Command service
-  Tourze\WorkermanServerBundle\Command\WorkermanHttpCommand:
-    tags: ['console.command']
-
-  # HTTP services
-  Tourze\WorkermanServerBundle\HTTP\OnMessage: ~
-  Tourze\WorkermanServerBundle\HTTP\ProperHeaderCasingResponseFactory: ~
-  Tourze\WorkermanServerBundle\HTTP\PsrRequestFactory: ~
-  Tourze\WorkermanServerBundle\HTTP\WorkermanResponseEmitter: ~
-
-  # Exception classes
-  Tourze\WorkermanServerBundle\Exception\RequestProcessingException: ~
-  Tourze\WorkermanServerBundle\Exception\WorkermanServerException: ~
+  Tourze\WorkermanServerBundle\Command\:
+    resource: '../../Command/'
+  Tourze\WorkermanServerBundle\HTTP\:
+    resource: '../../HTTP/'
 
   # MIME detector service
   workerman-server.mime-detector:

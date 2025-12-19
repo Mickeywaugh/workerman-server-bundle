@@ -6,6 +6,7 @@ namespace Tourze\WorkermanServerBundle\HTTP;
 
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
+use Monolog\Attribute\WithMonologChannel;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\HttpKernel\TerminableInterface;
 use Tourze\BacktraceHelper\ExceptionPrinter;
@@ -15,7 +16,8 @@ use Workerman\Connection\TcpConnection as WorkermanTcpConnection;
 use Workerman\Protocols\Http\Request as WorkermanRequest;
 use Workerman\Worker;
 
-class OnMessage
+#[WithMonologChannel(channel: 'workerman_server')]
+final class OnMessage
 {
     public function __construct(
         private readonly KernelInterface $kernel,

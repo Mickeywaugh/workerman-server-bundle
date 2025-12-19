@@ -4,7 +4,7 @@ namespace Tourze\WorkermanServerBundle\DependencyInjection;
 
 use Tourze\SymfonyDependencyServiceLoader\AutoExtension;
 
-class WorkermanServerExtension extends AutoExtension
+final class WorkermanServerExtension extends AutoExtension
 {
     protected function getConfigDir(): string
     {

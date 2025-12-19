@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
 use Symfony\Component\HttpFoundation\Response;
 
-class ProperHeaderCasingResponseFactory extends PsrHttpFactory
+final class ProperHeaderCasingResponseFactory extends PsrHttpFactory
 {
     /** @var array<string, string> */
     private static array $cache = [
