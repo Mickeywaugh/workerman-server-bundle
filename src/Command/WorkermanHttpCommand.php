@@ -85,8 +85,8 @@ final class WorkermanHttpCommand extends Command
      */
     protected function runHttpServer(InputInterface $input, OutputInterface $output): void
     {
-        $host = $input->getOption('host');
-        $port = $input->getOption('port');
+        $host = $_ENV['WORKERMAN_HTTP_SERVER_HOST'] ?? $input->getOption('host');
+        $port = $_ENV['WORKERMAN_HTTP_SERVER_PORT'] ?? $input->getOption('port');
         $isDaemon = $input->getOption('daemon');
         $worker = new Worker(sprintf('http://%s:%d', $host, $port));
         $worker->name = 'symfony-http-server';
