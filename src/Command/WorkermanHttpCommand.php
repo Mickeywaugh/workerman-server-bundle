@@ -88,7 +88,7 @@ final class WorkermanHttpCommand extends Command
         $host = $_ENV['WORKERMAN_HTTP_SERVER_HOST'] ?? $input->getOption('host');
         $port = $_ENV['WORKERMAN_HTTP_SERVER_PORT'] ?? $input->getOption('port');
         $isDaemon = $input->getOption('daemon');
-        $worker = new Worker(sprintf('http://%s:%d', $host, $port));
+        $worker = new Worker(sprintf('http://%s:%d', $host, (int)$port));
         $worker->name = 'symfony-http-server';
         $envCount = $_ENV['WORKERMAN_HTTP_SERVER_PROCESS_COUNT'] ?? null;
         $worker->count = is_numeric($envCount) ? (int) $envCount : max(2, (int) ($this->coreCounter->getCount() / 2));
