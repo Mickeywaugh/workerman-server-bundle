@@ -56,7 +56,7 @@ composer require tourze/workerman-server-bundle
 ```php
 return [
     // ...
-    Tourze\WorkermanServerBundle\WorkermanServerBundle::class => ['all' => true],
+    Mickeywaugh\WorkermanServerBundle\WorkermanServerBundle::class => ['all' => true],
 ];
 ```
 

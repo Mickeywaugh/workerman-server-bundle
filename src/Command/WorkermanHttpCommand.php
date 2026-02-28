@@ -1,6 +1,6 @@
 <?php
 
-namespace Tourze\WorkermanServerBundle\Command;
+namespace Mickeywaugh\WorkermanServerBundle\Command;
 
 use Fidry\CpuCoreCounter\CpuCoreCounter;
 use Fidry\CpuCoreCounter\Finder\DummyCpuCoreFinder;
@@ -22,7 +22,7 @@ use Symfony\Component\HttpKernel\TerminableInterface;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Contracts\Service\ResetInterface;
 use Tourze\Workerman\ProcessWorker\ProcessWorker;
-use Tourze\WorkermanServerBundle\Exception\WorkermanServerException;
+use Mickeywaugh\WorkermanServerBundle\Exception\WorkermanServerException;
 use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http;
 use Workerman\Protocols\Http\Request;
