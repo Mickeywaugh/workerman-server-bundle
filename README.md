@@ -63,7 +63,7 @@ php bin/console workerman:http <action>
 
 **Options**:
 
-- `--host`: The host address to bind to (default: 127.0.0.1). Also can be set via the environment variable `WORKERMAN_HTTP_SERVER_HOST`.
-- `--port`: The port number to listen on (default: 8080). Also can be set via the environment variable `WORKERMAN_HTTP_SERVER_PORT`.
+- `--host`: The host address to bind to (default: 127.0.0.1). Also can be set via the environment variable `WORKERMAN_SERVER_HOST`.
+- `--port`: The port number to listen on (default: 8080). Also can be set via the environment variable `WORKERMAN_SERVER_PORT`.
 - `--daemonize or -d`: Run the server as a daemon process
   
